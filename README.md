@@ -1,6 +1,6 @@
 # brackets-csv-formatter
 
-_Current version:_ **1.0.0** (In Development)
+_Current version:_ **1.0.1** (In Development)
 
 ## About
 
