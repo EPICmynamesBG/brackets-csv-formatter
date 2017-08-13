@@ -1,6 +1,6 @@
 # brackets-csv-formatter
 
-_ Current version: _ **1.0.0** (In Development)
+_Current version:_ **1.0.0** (In Development)
 
 ## About
 
@@ -9,6 +9,7 @@ As a developer, dealing with CSVs doesn't usually mean opening Excel
 a CSV is usually done in a Text Editor, then manually searched, edited,
 etc... Why not make this massive text document a little bit easier to gloss
 over by formatting it like Excel does?
+
 
 ## Development Notes
 
