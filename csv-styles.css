@@ -1,35 +1,46 @@
-.csv.CodeMirror-code {
+.csv .CodeMirror-code {
     display: table;
     width: 100%;
 }
 
-.csv.CodeMirror-code .CodeMirror-line {
+.csv .CodeMirror-code .CodeMirror-line {
   display: table-row-group;
 }
 
-.csv.CodeMirror-code > div:first-child .CodeMirror-line {
+.csv .CodeMirror-code > div:first-child .CodeMirror-line {
   display: table-header-group;
   font-weight: bold;
   font-style: italic;
 }
 
-.csv.CodeMirror-code .CodeMirror-line > span {
+.csv .CodeMirror-code .CodeMirror-line > span {
   display: table-row;
-  /*display: flex;
-  flex-flow: row nowrap;
-  width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;*/
 }
 
 .cm-m-csv.cm-column {
-    display: table-cell;*/
+    display: table-cell;
     padding-right: 20px;
-    min-width: 100px;
+    min-width: 50px;
     white-space: nowrap;
-    width: auto;
-    /*flex-grow: 1;
-    flex-shrink: 1;
-    vertical-align: top;
-    flex-basis: 1%;*/
+    margin: 2px 4px;
+    border: 0.5px dashed white;
+    background-color: transparent;
+}
+
+.csv .CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection {
+  background: #d7d4f0;
+}
+
+.CodeMirror.csv .CodeMirror-selected {
+  opacity: 0.5;
+}
+
+.dark .CodeMirror.csv .CodeMirror-selected,
+.dark .CodeMirror-focused.csv .CodeMirror-selected {
+  background: yellow !important;
+}
+
+.light .CodeMirror.csv .CodeMirror-selected,
+.light .CodeMirror-focused.csv .CodeMirror-selected {
+  background: #4f4f4f !important;
 }
