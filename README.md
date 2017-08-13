@@ -10,6 +10,7 @@ a CSV is usually done in a Text Editor, then manually searched, edited,
 etc... Why not make this massive text document a little bit easier to gloss
 over by formatting it like Excel does?
 
+![Screenshot](./screenshots/screenshot_1.png)
 
 ## Development Notes
 
