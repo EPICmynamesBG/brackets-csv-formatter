@@ -7,7 +7,8 @@ define(function (require, exports, module) {
         MainViewManager     = brackets.getModule("view/MainViewManager"),
         FileUtils           = brackets.getModule("file/FileUtils"),
         DocumentManager     = brackets.getModule("document/DocumentManager"),
-        AppInit            = brackets.getModule('utils/AppInit'),
+        EditorManager       = brackets.getModule("editor/EditorManager"),
+        AppInit             = brackets.getModule('utils/AppInit'),
         path                = ExtensionUtils.getModulePath(module);
 
     //////////////////////////////////////////////////////////////
@@ -24,7 +25,7 @@ define(function (require, exports, module) {
                 };
             },
             token: function (stream, state) {
-              var classStr = "column column-" + state.column;
+              var classStr = "m-csv column column-" + state.column;
               if (stream.skipTo(',')) { // Cell found on this line
                   stream.next();
                   state.column += 1;
@@ -58,23 +59,52 @@ define(function (require, exports, module) {
       return width;
     };
 
+    var cssElement;
+    var _saveCssRules = function(ruleMap = {}) {
+      var buildInnerHtml = function() {
+        var str = '';
+        Object.keys(ruleMap).forEach((className) => {
+          var width = ruleMap[className];
+          str += `${className} { width: ${width + 5}px !important; }\n`;
+        });
+        return str;
+      };
+
+      if (!cssElement) {
+        cssElement = document.createElement('style');
+        cssElement.setAttribute('id', 'csv-calc-css');
+        cssElement.setAttribute('type', 'text/css');
+      } else {
+        document.head.removeChild(cssElement);
+        cssElement = document.createElement('style');
+        cssElement.setAttribute('id', 'csv-calc-css');
+      }
+      cssElement.innerHTML = buildInnerHtml();
+      document.head.appendChild(cssElement);
+    };
+
     var _calculateColumnWidths = function() {
       var index = 0;
-      var currentColumns = $('.cm-m-csv.cm-column.cm-column-' + index);
+      var className = '.cm-m-csv.cm-column.cm-column-' + index;
+      var currentColumns = $(className);
+      var cssColumnMap = {};
+      var minWidth = 50;
       while (currentColumns.length > 0) {
         var largestWidth = -1;
+        console.log(currentColumns.length);
         currentColumns.each(function () {
           var thisWidth = $(this).textWidth();
           if (thisWidth > largestWidth) {
             largestWidth = thisWidth;
           }
         });
-        currentColumns.width(function(i, w) {
-          return largestWidth > w ? largestWidth : w;
-        });
+        cssColumnMap[className] = largestWidth > minWidth ? largestWidth : minWidth;
+
         index++;
-        currentColumns = $('.cm-m-csv.cm-column.cm-column-' + index);
+        className = '.cm-m-csv.cm-column.cm-column-' + index;
+        currentColumns = $(className);
       }
+      _saveCssRules(cssColumnMap);
       return;
     };
 
@@ -106,10 +136,10 @@ define(function (require, exports, module) {
           _calculateColumnWidths();
         }
       });
-      DocumentManager.on('documentRefreshed', function() {
+      EditorManager.on('activeEditorChange', function() {
         if (isCSVFile()) {
-          setTimeout(_calculateColumnWidths, 50);
+          _calculateColumnWidths();
         }
-      })
+      });
     });
 });
