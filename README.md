@@ -2,6 +2,11 @@
 
 _Current version:_ **1.1.1** (In Development)
 
+## Recent Fixes
+
+- turns out one theme was adding a CSS prefix that I assumed was always there... that's been fixed so tables always style now!
+- rather than generate inline styles that half break once you scroll, now we just generate a style tag with column rules 
+
 ## About
 
 As a developer, dealing with CSVs doesn't usually mean opening Excel
@@ -10,7 +15,7 @@ a CSV is usually done in a Text Editor, then manually searched, edited,
 etc... Why not make this massive text document a little bit easier to gloss
 over by formatting it like Excel does?
 
-![Screenshot](./screenshots/screenshot_1.png)
+![Screenshot](./screenshots/screenshot_v1.1.1.png)
 
 ## Development Notes
 
