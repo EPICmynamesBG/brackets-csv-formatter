@@ -1,19 +1,19 @@
 {
-    "name": "brackets-csv-formatter",
-    "title": "CSV (.csv) language mode for Brackets",
-    "description": "Added language mode for CSV (.csv)",
-    "homepage": "https://github.com/EPICmynamesBG/brackets-csv-formatter",
-    "author": "EPICmynamesBG (https://github.com/EPICmynamesBG)",
-    "license": "MIT",
-    "engines": {
-        "brackets": ">=1.5.0"
-    },
-    "scripts": {
-        "package": "git archive --format zip -o $npm_package_name-$npm_package_version.zip master",
-        "test": "set"
-    },
-    "version": "1.0.1",
-    "dependencies": {
+  "name": "brackets-csv-formatter",
+  "title": "CSV (.csv) language mode for Brackets",
+  "description": "Added language mode for CSV (.csv)",
+  "homepage": "https://github.com/EPICmynamesBG/brackets-csv-formatter",
+  "author": "EPICmynamesBG (https://github.com/EPICmynamesBG)",
+  "license": "MIT",
+  "engines": {
+    "brackets": ">=1.5.0"
+  },
+  "scripts": {
+    "package": "git archive --format zip -o $npm_package_name-$npm_package_version.zip master",
+    "test": "set"
+  },
+  "version": "1.0.1",
+  "dependencies": {
 
-    }
+  }
 }
