@@ -2,3 +2,4 @@ first_name_long_column,last_name,test,test23,newColumn,test3
 brandonlongcolumghere,groff,test,test12,testvalue,test3,hello world,hi there
 test,b,test,test12,testvalue, hello=world,test3,test4
 hello,test,lolz
+"test,escape",hello,world
